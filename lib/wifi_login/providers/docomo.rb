@@ -18,7 +18,7 @@ module WifiLogin
         form.password = password
         page = agent.submit(form)
         if status(page) != :success_auth
-          raise WifiLogin::Error.new('Login failure')
+          raise WifiLogin::Error.new('Login failure. (incorrect id/password?)')
         end
         true
       end

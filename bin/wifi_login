@@ -9,11 +9,12 @@ end
 begin
   case ARGV.first
   when 'install'
-    puts 'install'
+    puts 'not implemented'
   when 'login'
-    puts 'login'
+    success = WifiLogin.login
+    puts 'login success' if success
   when 'logout'
-    puts 'logout'
+    puts 'not implemented'
   when 'ssid'
     puts "current SSID: #{WifiLogin.ssid}"
   when 'help'

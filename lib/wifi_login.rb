@@ -1,4 +1,5 @@
 require "wifi_login/version"
+require "pit"
 require "systemu"
 
 module WifiLogin
@@ -14,6 +15,32 @@ module WifiLogin
     @@providers ||= {}
   end
 
+  def self.login
+    ssid = self.ssid
+    id, password = credential(ssid)
+    provider(ssid).login(id, password)
+  end
+
+  def self.provider(ssid)
+    provider_name = WifiLogin::Providers.constants.find {|provider|
+      provider.downcase.to_s == ssid.downcase
+    }
+    unless provider_name
+      raise WifiLogin::Error.new("provider is not found for SSID: #{ssid}")
+    end
+    WifiLogin::Providers.const_get(provider_name).new
+  end
+
+  def self.credential(ssid)
+    pit = Pit.get(ssid)
+    id = pit['id']
+    password = pit['password']
+    unless (id && password)
+      raise WifiLogin::Error.new("credential is not found. please run `pit set #{ssid}`.") 
+    end
+    [id, password]
+  end
+
   def self.ssid
     status, stdout, stderr = systemu AIRPORT_CMD
     if status.exitstatus != 0
@@ -22,7 +49,7 @@ module WifiLogin
 
     ssid_line = stdout.each_line.find {|line| line.match(/^\s+SSID:/) }
     unless ssid_line
-      raise WifiLogin::Error.new("not found SSID because may be disable wi-fi")
+      raise WifiLogin::Error.new("not found SSID (disable wi-fi?)")
     end
     ssid_line.chomp.split(': ')[1]
   end
