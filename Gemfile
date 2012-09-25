@@ -1,7 +1,6 @@
 source "http://rubygems.org"
 # Add dependencies required to use your gem here.
 gem 'mechanize'
-gem 'rspec'
 gem 'pit'
 gem 'systemu'
 
