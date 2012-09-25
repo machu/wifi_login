@@ -1,5 +1,4 @@
 require "wifi_login/version"
-#require "wifi_login/providers/docomo"
 require "systemu"
 
 module WifiLogin
@@ -21,11 +20,11 @@ module WifiLogin
       raise WifiLogin::Error.new("faild to exec #{cmd}")
     end
 
-    ssid = stdout.each_line.find {|line| line.match(/^SSID:/) }
-    unless ssid
+    ssid_line = stdout.each_line.find {|line| line.match(/^\s+SSID:/) }
+    unless ssid_line
       raise WifiLogin::Error.new("not found SSID because may be disable wi-fi")
     end
-    ssid.chomp.split(': ')[1]
+    ssid_line.chomp.split(': ')[1]
   end
 end
 

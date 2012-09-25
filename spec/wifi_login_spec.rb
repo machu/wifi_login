@@ -20,21 +20,21 @@ describe WifiLogin do
       before do
         status = double(:status, :exitstatus => 0)
         stdout = <<-EOL
-agrCtlRSSI: -63
-agrExtRSSI: 0
-agrCtlNoise: -96
-agrExtNoise: 0
-state: running
-op mode: station 
-lastTxRate: 54
-maxRate: 54
+     agrCtlRSSI: -70
+     agrExtRSSI: 0
+    agrCtlNoise: -96
+    agrExtNoise: 0
+          state: running
+        op mode: station 
+     lastTxRate: 48
+        maxRate: 54
 lastAssocStatus: 0
-802.11 auth: open
-link auth: none
-BSSID: 0:0:0:0:0:0
-SSID: docomo
-MCS: -1
-channel: 11
+    802.11 auth: open
+      link auth: none
+          BSSID: 00:00:00:00:00:00
+           SSID: docomo
+            MCS: -1
+        channel: 6
         EOL
         WifiLogin.stub!(:systemu).with(AIRPORT_CMD).and_return([status, stdout, ''])
       end
