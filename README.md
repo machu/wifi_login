@@ -22,8 +22,8 @@ gem コマンドを用いてインストールできます。
 ```
 $ pit set docomo
 ---
-id: tx2ekeu7-spmode@docomo
-password: u563a8t6
+id: your-id-spmode@docomo
+password: your-password
 ```
 
 ## Usage
