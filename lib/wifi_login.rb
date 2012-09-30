@@ -17,8 +17,18 @@ module WifiLogin
 
   def self.login
     ssid = self.ssid
+    puts "detected SSID: #{ssid}"
+    provider = provider(ssid)
     id, password = credential(ssid)
-    provider(ssid).login(id, password)
+    begin
+      provider(ssid).login(id, password)
+    rescue SocketError => e
+      puts e.message
+      retry_count ||= 0
+      raise if (retry_count += 1) > 6
+      sleep 10
+      retry
+    end
   end
 
   def self.provider(ssid)
@@ -52,6 +62,10 @@ module WifiLogin
       raise WifiLogin::Error.new("not found SSID (disable wi-fi?)")
     end
     ssid_line.chomp.split(': ')[1]
+  end
+
+  def self.in_rbenv?
+    ENV.has_key?('RBENV_ROOT')
   end
 end
 
