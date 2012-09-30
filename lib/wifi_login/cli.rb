@@ -1,8 +1,19 @@
 require 'thor'
+require 'wifi_login'
 
 module WifiLogin
   class CLI < Thor
     include Thor::Actions
+
+    desc "install", "Install trigger to your Mac OS X System (launchd)."
+    def install
+      raise WifiLogin::Error.new("not implemented")
+    end
+
+    desc "uninstall", "Uninstall trigger."
+    def uninstall
+      raise WifiLogin::Error.new("not implemented")
+    end
 
     desc "ssid", "Show current SSID"
     def ssid

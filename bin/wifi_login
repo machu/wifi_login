@@ -2,41 +2,6 @@
 require 'wifi_login'
 require 'wifi_login/cli'
 
-=begin
-if ['--version', '-v'].include?(ARGV.first)
-  puts "wifi_login #{WifiLogin::VERSION}"
-  exit(0)
-end
-
-begin
-  case ARGV.first
-  when 'install'
-    puts 'not implemented'
-  when 'login'
-    success = WifiLogin.login
-    puts 'login success' if success
-  when 'logout'
-    puts 'not implemented'
-  when 'ssid'
-    puts "current SSID: #{WifiLogin.ssid}"
-  when 'help'
-    puts <<-"EOS"
-wifi_login #{WifiLogin::VERSION}
-usage: wifi_login COMMAND
-
-  install   # install trigger to your Mac OS X System (launchd)
-  uninstall # uninstall trigger
-  login     # login public wi-fi access point
-  ssid      # show current SSID
-  help      # show this message
-
-EOS
-  else
-    STDERR.puts "wifi_login: unknown command #{ARGV.first} (see `wifi_login help`)"
-    exit(1)
-  end
-=end
-
 begin
   WifiLogin::CLI.start
 rescue WifiLogin::Error => e
