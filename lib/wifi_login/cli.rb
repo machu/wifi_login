@@ -40,18 +40,18 @@ module WifiLogin
 
     desc "ssid", "Show current SSID"
     def ssid
-      puts "current SSID: #{WifiLogin.ssid}"
+      say "current SSID: #{WifiLogin.ssid}"
     end
 
     desc "login", "Login public wi-fi access point."
     def login
       success = WifiLogin.login
-      puts 'login success' if success
+      say 'Login success!', Thor::Shell::Color::GREEN if success
     end
 
     desc "version", "Prints the bundler's version information"
     def version
-      puts "wifi_login #{WifiLogin::VERSION}"
+      say "wifi_login #{WifiLogin::VERSION}"
     end
     map %w(-v --version) => :version
 
