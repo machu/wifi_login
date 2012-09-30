@@ -33,9 +33,8 @@ module WifiLogin
 
     desc "uninstall", "Uninstall trigger."
     def uninstall
-      password = ask("input password")
-      return unless File.exist?(LAUNCH_AGENT_FILE)
       run "launchctl unload #{LAUNCH_AGENT_FILE}"
+      return unless File.exist?(LAUNCH_AGENT_FILE)
       remove_file LAUNCH_AGENT_FILE
     end
 
