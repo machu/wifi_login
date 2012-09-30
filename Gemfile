@@ -3,6 +3,7 @@ source "http://rubygems.org"
 gem 'mechanize'
 gem 'pit'
 gem 'systemu'
+gem 'thor'
 
 # Add dependencies to develop your gem here.
 # Include everything needed to run rake, tests, features, etc.

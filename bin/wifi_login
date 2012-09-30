@@ -1,6 +1,8 @@
 #!/usr/bin/env ruby
 require 'wifi_login'
+require 'wifi_login/cli'
 
+=begin
 if ['--version', '-v'].include?(ARGV.first)
   puts "wifi_login #{WifiLogin::VERSION}"
   exit(0)
@@ -33,6 +35,10 @@ EOS
     STDERR.puts "wifi_login: unknown command #{ARGV.first} (see `wifi_login help`)"
     exit(1)
   end
+=end
+
+begin
+  WifiLogin::CLI.start
 rescue WifiLogin::Error => e
   STDERR.puts "ERROR! #{e.message}"
   exit(1)
