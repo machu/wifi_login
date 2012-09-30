@@ -20,5 +20,6 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency 'mechanize'
   gem.add_runtime_dependency 'pit'
   gem.add_runtime_dependency 'systemu'
+  gem.add_runtime_dependency 'thor'
 
 end
