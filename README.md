@@ -1,6 +1,6 @@
 # WifiLogin
 
-An automatically login tool when connected to a public wireless LAN.
+An automatically login tool when connected to a public wireless LAN for Max OS X.
 
 公衆無線LANに自動でログインするためのツールです。
 現時点では docomo Wi-Fi サービスのみ対応しています。
@@ -22,7 +22,7 @@ rbenv を使っているのであれば、忘れずに `rehash` も実行して�
 ## Configuration
 
 公衆無線LANに接続したときに自動的にこのスクリプトを起動するように設定します。
-`wifi\_login install` コマンドを実行してください。
+`wifi_login install` コマンドを実行してください。
 
 ```
 $ wifi_login install
@@ -66,7 +66,6 @@ $ wifi_login uninstall
 
 ## TODO
 
- * launchdを用いた公衆無線LANへの自動接続
  * Growlによるログオン完了通知
  * WISPr対応
 
